@@ -22,16 +22,22 @@
         * {
             margin: 0;
             box-sizing: border-box;
-            
+        }
+        body {
+            background: black;
+            color: white;
+            min-height: 100vh;
+        }
+        .title {
+            font-size: 50px;
         }
         .jacquard {
             font-family: 'jacquard12';
         }
         header {
             font-family: 'Jacquard12';
-        }
-        .historia {
-            font-family: 'Rubik';
+            text-align: center;
+            border-bottom: 3px solid #444 ;
         }
         .dungeon {
             font-family: 'tiny5';
@@ -41,9 +47,72 @@
         }
 
         img {
-            gap: 10px;
-            display: flex;
             width: 100px;
+        }
+        #historia {
+            font-family: 'tiny5';
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            background: black;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+        #historia p {
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .historia {
+            display: block;
+            margin: 10px auto;
+            width: 100px;
+            max-width: 100%;
+            height: auto;
+        }
+        #site {
+            font-family: 'tiny5';
+            display: none;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #barra {
+            height: 35px;
+            width: 200px;
+            appearance: none;
+        }
+        .barra {
+            width: 40px;
+        }
+        .coletor {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+        }
+        main {
+            flex: auto;
+        }
+        .recursos {
+            display: flex;
+            gap: 10px;
+        }
+        .recur {
+            display: flex;
+            gap: 10px;
         }
 
     </style>
@@ -51,46 +120,59 @@
 <body>
 
     <header>
-        <h1>Boring Dungeon</h1>
+        <h1 class="title">Boring Dungeon</h1>
     </header>
     <main>
-        <div class="historia">
+        <div id="historia">
             <h2>HISTÓRIA</h2>
 
             <p>
-                Em um dia como os outros, fui a floresta pegar lenha para manter o estoque, mas quando volto <br>
-                para casa vejo minha casa vazia, sem minha mulher e filha. Apenas um bilhete.
-                <img src="img/carta_pixelada.png" alt="carta de resgate">
-                Após ler a carta, começo minha jornada de resgate até o andar 1000 da masmorra nas profundesas da caverna <br> 
+                Em um dia como qualquer outro, fui à floresta buscar lenha para manter o estoque de casa. <br>
+                Porém, ao retornar, encontrei minha casa vazia. Minha esposa e minha filha haviam desaparecido,<br>
+                 deixando para trás apenas um bilhete:
+                <img class="historia" src="img/carta_pixelada.png" alt="carta de resgate">
+                Sem saber quem as levou ou por quê, peguei minha velha arma e parti em direção à masmorra, um lugar <br>
+                misterioso nas profundezas de uma caverna, repleto de perigos e tesouros esquecidos. Não importa quantos <br>
+                 monstros eu enfrente ou quantos andares precise atravessar. Vou encontrar minha família, custe o que custar.
             </p>
+            <button id="começar">começar</button>
         </div>
-         <div>
-            <h1 class="jacquard">Boring Dungeon</h1>
-            <div>
+         <div id="site">
                 <h1>recursos</h1>
+            <div class="recursos">
+                <div class="recur">
                 <p>madeira</p>
                 <p>0</p>
+                </div>
+                <div class="recur">
                 <p>pedra</p>
                 <p>0</p>
-                
-                
-            </div>
-            <section>
-                <div>
-                    <button onclick="iniciar()">coletar</button>
-                    <progress id="barra" value="0" max="100">0%</progress>
-                    
                 </div>
-            </section>
+            </div>
+            
         </div>
     </main>
     <footer>
-
+        <section>
+                <div class="coletor">
+                    <button onclick="click()">coletar</button>
+                    <progress id="barra" value="0" max="100">0%</progress>
+                    <img class="barra" src="img/madeira.png" alt="madeira">
+                </div>
+                <div class="coletor">
+                    <button onclick="click()">coletar</button>
+                    <progress id="barra" value="0" max="100">0%</progress>
+                    <img class="barra" src="img/pedra.png" alt="madeira">
+                </div>
+            </section>
     </footer>
 
     <script>
 
-        let madeira = 0 
+        document.getElementById("começar").addEventListener("click", function() {
+            document.getElementById("historia").style.display = "none";
+            document.getElementById("site").style.display = "block";
+        })
 
     </script>
 </body>
